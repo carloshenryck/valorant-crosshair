@@ -1,0 +1,27 @@
+import { ICrosshair } from "../types";
+
+export const crosshairAttrSubtitle: { [key: string]: keyof ICrosshair } = {
+  c: "color",
+  u: "hexColorValue",
+  h: "outlinesEnabled",
+  t: "outlinesThickness",
+  o: "outlinesAlpha",
+  d: "dotEnabled",
+  b: "hexColorEnabled",
+  z: "dotThickness",
+  a: "dotAlpha",
+  "0b": "innerEnabled",
+  "0t": "innerThickness",
+  "0l": "innerLength",
+  "0v": "innerVerticalLength",
+  "0g": "innerVerticalEnabled",
+  "0o": "innerOffset",
+  "0a": "innerAlpha",
+  "1b": "outerEnabled",
+  "1t": "outerThickness",
+  "1l": "outerLength",
+  "1v": "outerVerticalLength",
+  "1g": "outerVerticalEnabled",
+  "1o": "outerOffset",
+  "1a": "outerAlpha",
+};
