@@ -1,5 +1,5 @@
 import { useCrosshairStore } from "../stores/CrosshairStore";
-import { getBackgroundColor, percentageToHex } from "../utils/colorsFn";
+import { getBackgroundColor } from "../utils/colorsFn";
 import {
   showInnerVerticalLines,
   showOuterVerticalLines,
@@ -19,7 +19,7 @@ export default function CrosshairPreview() {
                 style={{
                   width: `${crosshairConfig.innerLength}px`,
                   height: `${crosshairConfig.innerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.innerAlpha * 100
                   )}`,
                   transform: `translateX(calc(-50% - ${crosshairConfig.innerOffset}px))`,
@@ -35,7 +35,7 @@ export default function CrosshairPreview() {
                 style={{
                   width: `${crosshairConfig.innerLength}px`,
                   height: `${crosshairConfig.innerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.innerAlpha * 100
                   )}`,
                   transform: `translateX(calc(50% + ${crosshairConfig.innerOffset}px))`,
@@ -59,7 +59,7 @@ export default function CrosshairPreview() {
                       : crosshairConfig.innerLength
                   }px`,
                   width: `${crosshairConfig.innerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.innerAlpha * 100
                   )}`,
                   transform: `translateY(calc(-50% - ${crosshairConfig.innerOffset}px))`,
@@ -79,7 +79,7 @@ export default function CrosshairPreview() {
                       : crosshairConfig.innerLength
                   }px`,
                   width: `${crosshairConfig.innerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.innerAlpha * 100
                   )}`,
                   transform: `translateY(calc(50% + ${crosshairConfig.innerOffset}px))`,
@@ -103,7 +103,7 @@ export default function CrosshairPreview() {
                 style={{
                   width: `${crosshairConfig.outerLength}px`,
                   height: `${crosshairConfig.outerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.outerAlpha * 100
                   )}`,
                   transform: `translateX(calc(-50% - ${crosshairConfig.outerOffset}px))`,
@@ -119,7 +119,7 @@ export default function CrosshairPreview() {
                 style={{
                   width: `${crosshairConfig.outerLength}px`,
                   height: `${crosshairConfig.outerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.outerAlpha * 100
                   )}`,
                   transform: `translateX(calc(50% + ${crosshairConfig.outerOffset}px))`,
@@ -143,7 +143,7 @@ export default function CrosshairPreview() {
                       : crosshairConfig.outerLength
                   }px`,
                   width: `${crosshairConfig.outerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.outerAlpha * 100
                   )}`,
                   transform: `translateY(calc(-50% - ${crosshairConfig.outerOffset}px))`,
@@ -163,7 +163,7 @@ export default function CrosshairPreview() {
                       : crosshairConfig.outerLength
                   }px`,
                   width: `${crosshairConfig.outerThickness}px`,
-                  backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+                  backgroundColor: `#${getBackgroundColor(
                     +crosshairConfig.outerAlpha * 100
                   )}`,
                   transform: `translateY(calc(50% + ${crosshairConfig.outerOffset}px))`,
@@ -184,7 +184,7 @@ export default function CrosshairPreview() {
           style={{
             width: `${crosshairConfig.dotThickness}px`,
             height: `${crosshairConfig.dotThickness}px`,
-            backgroundColor: `#${getBackgroundColor()}${percentageToHex(
+            backgroundColor: `#${getBackgroundColor(
               +crosshairConfig.dotAlpha * 100
             )}`,
             boxShadow: `${
