@@ -15,7 +15,7 @@ export default function CrosshairPreview() {
           {crosshairConfig.innerLength !== "0" && (
             <>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   width: `${crosshairConfig.innerLength}px`,
                   height: `${crosshairConfig.innerThickness}px`,
@@ -31,7 +31,7 @@ export default function CrosshairPreview() {
                 }}
               ></div>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   width: `${crosshairConfig.innerLength}px`,
                   height: `${crosshairConfig.innerThickness}px`,
@@ -51,7 +51,7 @@ export default function CrosshairPreview() {
           {showInnerVerticalLines() && (
             <>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   height: `${
                     crosshairConfig.innerVerticalEnabled
@@ -71,7 +71,7 @@ export default function CrosshairPreview() {
                 }}
               ></div>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   height: `${
                     crosshairConfig.innerVerticalEnabled
@@ -99,7 +99,7 @@ export default function CrosshairPreview() {
           {crosshairConfig.outerLength !== "0" && (
             <>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   width: `${crosshairConfig.outerLength}px`,
                   height: `${crosshairConfig.outerThickness}px`,
@@ -115,7 +115,7 @@ export default function CrosshairPreview() {
                 }}
               ></div>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   width: `${crosshairConfig.outerLength}px`,
                   height: `${crosshairConfig.outerThickness}px`,
@@ -135,7 +135,7 @@ export default function CrosshairPreview() {
           {showOuterVerticalLines() && (
             <>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   height: `${
                     crosshairConfig.outerVerticalEnabled
@@ -155,7 +155,7 @@ export default function CrosshairPreview() {
                 }}
               ></div>
               <div
-                className="absolute box-content"
+                className="absolute box-content transition-transform"
                 style={{
                   height: `${
                     crosshairConfig.outerVerticalEnabled

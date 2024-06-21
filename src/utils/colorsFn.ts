@@ -8,7 +8,7 @@ export const getBackgroundColor = (alpha: number): string => {
     const hasAlpha = hexValue.length === 8;
     return hasAlpha ? hexValue : `${hexValue}${percentageToHex(alpha)}`;
   } else {
-    return bgColors[+crosshairConfig.color];
+    return `${bgColors[+crosshairConfig.color]}${percentageToHex(alpha)}`;
   }
 };
 
