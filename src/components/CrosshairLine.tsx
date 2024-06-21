@@ -31,112 +31,60 @@ export default function CrosshairLine({ position, type }: CrosshairLineProps) {
     outlinesThickness,
   } = crosshairConfig;
 
-  const innerStyles: { [key: string]: CSSProperties } = {
-    left: {
-      width: `${innerLength}px`,
-      height: `${innerThickness}px`,
-      transform: `translateX(calc(-50% - ${innerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+innerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${innerLength !== "0" ? "block" : "none"}`,
-    },
-    right: {
-      width: `${innerLength}px`,
-      height: `${innerThickness}px`,
-      transform: `translateX(calc(50% + ${innerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+innerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${innerLength !== "0" ? "block" : "none"}`,
-    },
-    top: {
-      height: `${innerVerticalEnabled ? innerVerticalLength : innerLength}px`,
-      width: `${innerThickness}px`,
-      transform: `translateY(calc(-50% - ${innerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+innerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${showInnerVerticalLines() ? "block" : "none"}`,
-    },
-    bottom: {
-      height: `${innerVerticalEnabled ? innerVerticalLength : innerLength}px`,
-      width: `${innerThickness}px`,
-      transform: `translateY(calc(50% + ${innerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+innerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${showInnerVerticalLines() ? "block" : "none"}`,
-    },
+  const isVertical = position === "top" || position === "bottom";
+
+  const getPosition = (offset: string) => {
+    return `${isVertical ? "translateY" : "translateX"}(calc(${
+      position === "left" || position == "top" ? "-50% - " : "50% + "
+    }${offset}px))`;
   };
 
-  const outerStyles: { [key: string]: CSSProperties } = {
-    left: {
-      width: `${outerLength}px`,
-      height: `${outerThickness}px`,
-      transform: `translateX(calc(-50% - ${outerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+outerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${outerLength !== "0" ? "block" : "none"}`,
-    },
-    right: {
-      width: `${outerLength}px`,
-      height: `${outerThickness}px`,
-      transform: `translateX(calc(50% + ${outerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+outerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${outerLength !== "0" ? "block" : "none"}`,
-    },
-    top: {
-      height: `${outerVerticalEnabled ? outerVerticalLength : outerLength}px`,
-      width: `${outerThickness}px`,
-      transform: `translateY(calc(-50% - ${outerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+outerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${showOuterVerticalLines() ? "block" : "none"}`,
-    },
-    bottom: {
-      height: `${outerVerticalEnabled ? outerVerticalLength : outerLength}px`,
-      width: `${outerThickness}px`,
-      transform: `translateY(calc(50% + ${outerOffset}px))`,
-      backgroundColor: `#${getBackgroundColor(+outerAlpha * 100)}`,
-      boxShadow: `${
-        outlinesEnabled
-          ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
-          : ""
-      }`,
-      display: `${showOuterVerticalLines() ? "block" : "none"}`,
-    },
+  const innerStyles: CSSProperties = {
+    width: `${isVertical ? `${innerThickness}` : `${innerLength}`}px`,
+    height: `${
+      isVertical
+        ? `${innerVerticalEnabled ? innerVerticalLength : innerLength}`
+        : `${innerThickness}`
+    }px`,
+    transform: `${getPosition(innerOffset)}`,
+    backgroundColor: `#${getBackgroundColor(+innerAlpha * 100)}`,
+    boxShadow: `${
+      outlinesEnabled
+        ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
+        : ""
+    }`,
+    display: `${
+      isVertical
+        ? `${showInnerVerticalLines() ? "block" : "none"}`
+        : `${innerLength !== "0" ? "block" : "none"}`
+    }`,
+  };
+
+  const outerStyles: CSSProperties = {
+    width: `${isVertical ? `${outerThickness}` : `${outerLength}`}px`,
+    height: `${
+      isVertical
+        ? `${outerVerticalEnabled ? outerVerticalLength : outerLength}`
+        : `${outerThickness}`
+    }px`,
+    transform: `${getPosition(outerOffset)}`,
+    backgroundColor: `#${getBackgroundColor(+outerAlpha * 100)}`,
+    boxShadow: `${
+      outlinesEnabled
+        ? `rgba(0, 0, 0, ${outlinesAlpha}) 0px 0px 0px ${outlinesThickness}px`
+        : ""
+    }`,
+    display: `${
+      isVertical
+        ? `${showOuterVerticalLines() ? "block" : "none"}`
+        : `${outerLength !== "0" ? "block" : "none"}`
+    }`,
   };
 
   return (
     <div
       className="absolute box-content transition-transform"
-      style={type === "inner" ? innerStyles[position] : outerStyles[position]}
+      style={type === "inner" ? innerStyles : outerStyles}
     />
   );
 }
